@@ -21,6 +21,10 @@ public class AddressEntity {
 	@Column(nullable = false)
 	private String postalCode;
 
+	// Dwukierunkowa po stronie dziecka
+	@OneToOne(mappedBy = "address")
+	private PatientEntity patient;
+
 	public Long getId() {
 		return id;
 	}
@@ -61,4 +65,11 @@ public class AddressEntity {
 		this.postalCode = postalCode;
 	}
 
+	public PatientEntity getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
+	}
 }
