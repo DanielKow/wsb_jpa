@@ -21,7 +21,7 @@ public class AddressEntity {
 	@Column(nullable = false)
 	private String postalCode;
 
-	// Dwukierunkowa po stronie dziecka
+	// Dwustronna po stronie dziecka
 	@OneToOne(mappedBy = "address")
 	private PatientEntity patient;
 

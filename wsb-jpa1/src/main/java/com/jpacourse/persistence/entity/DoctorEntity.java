@@ -31,11 +31,11 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
-	// Jednokierunkowa
+	// Jednostronna
 	@OneToOne
 	private AddressEntity address;
 
-	// Dwukierunkowa po stronie rodzica
+	// Dwustronna po stronie rodzica
 	@OneToMany(mappedBy = "doctor")
 	private Collection<VisitEntity> visits;
 

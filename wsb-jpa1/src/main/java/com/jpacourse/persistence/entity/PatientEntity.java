@@ -1,6 +1,7 @@
 package com.jpacourse.persistence.entity;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 import javax.persistence.*;
 
@@ -29,9 +30,13 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
-	// Dwukierunkowa po stronie rodzica
+	// Dwustronna po stronie rodzica
 	@OneToOne
 	private AddressEntity address;
+
+	// Dwustronna po stronie rodzica
+	@OneToMany(mappedBy = "patient")
+	private Collection<VisitEntity> visits;
 
 	public Long getId() {
 		return id;
@@ -95,5 +100,13 @@ public class PatientEntity {
 
 	public void setAddress(AddressEntity address) {
 		this.address = address;
+	}
+
+	public Collection<VisitEntity> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(Collection<VisitEntity> visits) {
+		this.visits = visits;
 	}
 }
