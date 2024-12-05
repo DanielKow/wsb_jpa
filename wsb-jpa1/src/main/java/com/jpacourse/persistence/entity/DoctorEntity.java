@@ -32,11 +32,11 @@ public class DoctorEntity {
 	private Specialization specialization;
 
 	// Jednostronna
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private AddressEntity address;
 
 	// Dwustronna po stronie rodzica
-	@OneToMany(mappedBy = "doctor")
+	@OneToMany(mappedBy = "doctor", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	private Collection<VisitEntity> visits;
 
 	public AddressEntity getAddress() {

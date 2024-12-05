@@ -27,7 +27,7 @@ public class VisitEntity {
 	private PatientEntity patient;
 
 	// Jednostronna
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "VISITS_TO_TREATMENTS",
 			joinColumns = @JoinColumn(name = "VISIT_ID"),
 			inverseJoinColumns = @JoinColumn(name = "TREATMENT_ID"))

@@ -31,11 +31,11 @@ public class PatientEntity {
 	private LocalDate dateOfBirth;
 
 	// Dwustronna po stronie rodzica
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private AddressEntity address;
 
 	// Dwustronna po stronie rodzica
-	@OneToMany(mappedBy = "patient")
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
 	private Collection<VisitEntity> visits;
 
 	public Long getId() {
