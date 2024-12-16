@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class PatientMapper {
-    public PatientTO toTO(PatientEntity patientEntity) {
 
+    public static PatientTO toTO(PatientEntity patientEntity) {
         if (patientEntity == null) {
             return null;
         }
@@ -51,7 +51,7 @@ public final class PatientMapper {
         return patientTO;
     }
 
-    public PatientEntity toEntity(PatientTO patientTO) {
+    public static PatientEntity toEntity(PatientTO patientTO) {
         if (patientTO == null) {
             return null;
         }
