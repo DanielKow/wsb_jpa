@@ -1,5 +1,7 @@
 package com.jpacourse.dto;
 
+import com.jpacourse.persistence.enums.Sex;
+
 import java.io.Serializable;
 
 public class AddressTO implements Serializable

@@ -1,5 +1,7 @@
 package com.jpacourse.persistence.entity;
 
+import com.jpacourse.persistence.enums.Sex;
+
 import java.time.LocalDate;
 import java.util.Collection;
 
@@ -22,6 +24,7 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private String telephoneNumber;
 
+	@Column
 	private String email;
 
 	@Column(nullable = false)
@@ -29,6 +32,13 @@ public class PatientEntity {
 
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
+
+	@Column(columnDefinition = "integer default 25")
+	private int numberOfCheesecakes;
+
+	@Column(columnDefinition = "varchar(6) default 'FEMALE'")
+	@Enumerated(EnumType.STRING)
+	private Sex sex;
 
 	// Dwustronna po stronie rodzica
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -109,4 +119,20 @@ public class PatientEntity {
 	public void setVisits(Collection<VisitEntity> visits) {
 		this.visits = visits;
 	}
+
+    public int getNumberOfCheesecakes() {
+        return numberOfCheesecakes;
+    }
+
+    public void setNumberOfCheesecakes(int numberOfCheesecakes) {
+        this.numberOfCheesecakes = numberOfCheesecakes;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
 }

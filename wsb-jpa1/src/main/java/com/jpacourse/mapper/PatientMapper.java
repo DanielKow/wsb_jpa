@@ -29,6 +29,8 @@ public final class PatientMapper {
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
         patientTO.setEmail(patientEntity.getEmail());
         patientTO.setPatientNumber(patientEntity.getPatientNumber());
+        patientTO.setSex(patientEntity.getSex());
+        patientTO.setNumberOfCheesecakes(patientEntity.getNumberOfCheesecakes());
         List<VisitTO> visits = new ArrayList<>();
 
         for (VisitEntity visitEntity : patientEntity.getVisits()) {
