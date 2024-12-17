@@ -5,6 +5,7 @@ import com.jpacourse.persistence.enums.Sex;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 
 public class PatientTO implements Serializable {
     private Long id;
@@ -15,7 +16,7 @@ public class PatientTO implements Serializable {
     private String patientNumber;
     private LocalDate dateOfBirth;
     private AddressTO address;
-    private Collection<VisitTO> visits;
+    private List<VisitTO> visits;
     private int numberOfCheesecakes;
     private Sex sex;
 
@@ -83,11 +84,11 @@ public class PatientTO implements Serializable {
         this.address = address;
     }
 
-    public Collection<VisitTO> getVisits() {
+    public List<VisitTO> getVisits() {
         return visits;
     }
 
-    public void setVisits(Collection<VisitTO> visits) {
+    public void setVisits(List<VisitTO> visits) {
         this.visits = visits;
     }
 

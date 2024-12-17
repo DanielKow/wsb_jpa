@@ -62,7 +62,10 @@ VALUES
     (7, 'USG narządów rodnych', 'USG'),
     (8, 'EKG długoterminowe', 'EKG'),
     (9, 'RTG płuc', 'RTG'),
-    (10, 'USG tarczycy', 'USG');
+    (10, 'USG tarczycy', 'USG'),
+    (11, 'Badanie RTG', 'RTG'),
+    (12, 'Badanie EKG', 'EKG'),
+    (13, 'Badanie RTG', 'RTG');
 
 -- Insert Data into Visit Table
 INSERT INTO VISIT (id, description, time, doctor_id, patient_id)
@@ -76,8 +79,9 @@ VALUES
     (7, 'Szczepienie i EKG', '2023-10-16 14:00:00', 7, 7),
     (8, 'Kontrola pooperacyjna USG', '2023-10-17 16:00:00', 8, 8),
     (9, 'Przegląd wyników RTG', '2023-10-18 15:00:00', 9, 9),
-    (10, 'Sesja końcowa USG', '2023-10-19 13:30:00', 10, 10);
-
+    (10, 'Sesja końcowa USG', '2023-10-19 13:30:00', 10, 10),
+    (11, 'Badanie RTG', '2023-10-20 10:00:00', 2, 1),
+    (12, 'RTG i EKG', '2023-10-21 11:00:00', 9, 1);
 -- Insert Data into VISITS_TO_TREATMENTS Table (for Many-to-Many Relationship)
 INSERT INTO VISITS_TO_TREATMENTS (visit_id, treatment_id)
 VALUES
@@ -90,4 +94,7 @@ VALUES
     (7, 7),
     (8, 8),
     (9, 9),
-    (10, 10);
+    (10, 10),
+    (11, 11),
+    (12, 12),
+    (12, 13);
