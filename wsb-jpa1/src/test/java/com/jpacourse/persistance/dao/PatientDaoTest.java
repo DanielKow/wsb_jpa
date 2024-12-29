@@ -23,9 +23,6 @@ public class PatientDaoTest {
     @Autowired
     private PatientDao patientDao;
 
-    @Autowired
-    private VisitDao visitDao;
-
     @Transactional
     @Test
     public void addNewVisitToPatientShouldPersistVisit() {
@@ -38,8 +35,7 @@ public class PatientDaoTest {
         // then
         Collection<VisitEntity> visitsAfter = patientDao.findOne(1L).getVisits();
         assertThat(visitsAfter.size()).isEqualTo(visitsBefore.size() + 1);
-        Long newVisitId = visitsAfter.stream().filter(v -> !visitsBefore.contains(v)).findFirst().get().getId();
-        VisitEntity newVisit = visitDao.findOne(newVisitId);
+        VisitEntity newVisit = visitsAfter.stream().filter(v -> !visitsBefore.contains(v)).findFirst().get();
         assertThat(newVisit.getTime()).isEqualTo(LocalDateTime.parse("2023-10-21T11:00:00"));
         assertThat(newVisit.getDescription()).isEqualTo("Przykładowy opis wizyty");
         assertThat(newVisit.getDoctor().getId()).isEqualTo(1L);
