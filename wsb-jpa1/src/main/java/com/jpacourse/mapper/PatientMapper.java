@@ -51,6 +51,19 @@ public final class PatientMapper {
         return patientTO;
     }
 
+    public static List<PatientTO> toTO(List<PatientEntity> patientEntities) {
+        if (patientEntities == null) {
+            return new ArrayList<>();
+        }
+
+        List<PatientTO> patientTOs = new ArrayList<>();
+        for (PatientEntity patientEntity : patientEntities) {
+            patientTOs.add(toTO(patientEntity));
+        }
+
+        return patientTOs;
+    }
+
     public static PatientEntity toEntity(PatientTO patientTO) {
         if (patientTO == null) {
             return null;

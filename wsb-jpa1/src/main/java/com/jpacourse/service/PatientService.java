@@ -1,13 +1,17 @@
 package com.jpacourse.service;
 
 import com.jpacourse.dto.PatientTO;
+import com.jpacourse.dto.VisitTO;
+
 import java.util.List;
 
 
 public interface PatientService {
-    public PatientTO findById(final Long id);
-    public void remove(final Long id);
-
-    List<PatientTO> getByLastName (String lastName);
+    PatientTO findById(final Long id);
+    void remove(final Long id);
+    List<PatientTO> getByLastName (final String lastName);
+    List<VisitTO> getVisits(Long patientId);
+    List<PatientTO> getWhenMoreVisitsThan(int numberOfVisits);
+    List<PatientTO> getWhenHaveEatenLessCheesecakesThan(int numberOfCheesecakes);
 
 }
