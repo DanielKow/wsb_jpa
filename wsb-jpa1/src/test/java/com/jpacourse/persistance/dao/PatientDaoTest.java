@@ -41,6 +41,7 @@ public class PatientDaoTest {
         assertThat(newVisit.getDoctor().getId()).isEqualTo(1L);
     }
 
+    @Transactional
     @Test
     public void getByLastName_should_return_all_patients_with_given_last_name() {
         // given
@@ -54,6 +55,7 @@ public class PatientDaoTest {
         }
     }
 
+    @Transactional
     @Test
     public void getByLastName_should_return_one_patient_when_there_is_only_one_patient_with_given_last_name() {
         // given
@@ -65,6 +67,7 @@ public class PatientDaoTest {
         assertThat(patients.stream().findFirst().get().getLastName()).isEqualTo("Szymański");
     }
 
+    @Transactional
     @Test
     public void getByLastName_should_return_empty_list_when_there_is_no_patient_with_given_last_name() {
         // given
@@ -75,6 +78,7 @@ public class PatientDaoTest {
         assertThat(patients.size()).isEqualTo(0);
     }
 
+    @Transactional
     @Test
     public void getWhenMoreVisitsThan_should_return_patients_with_more_visits_than_given_number() {
         // given
@@ -88,6 +92,7 @@ public class PatientDaoTest {
         }
     }
 
+    @Transactional
     @Test
     public void getWhenMoreVisitsThan_should_return_empty_list_when_there_is_no_patient_with_more_visits_than_given_number() {
         // given
@@ -98,6 +103,7 @@ public class PatientDaoTest {
         assertThat(patients.size()).isEqualTo(0);
     }
 
+    @Transactional
     @Test
     public void getWhenMoreVisitsThan_should_return_all_patients_when_given_number_is_minus_one() {
         // given
@@ -108,6 +114,7 @@ public class PatientDaoTest {
         assertThat(patients.size()).isEqualTo(patientDao.findAll().size());
     }
 
+    @Transactional
     @Test
     public void getWhenHaveEatenLessCheesecakesThan_should_return_patients_with_less_eaten_cheesecakes_than_given_number() {
         // given
@@ -121,6 +128,7 @@ public class PatientDaoTest {
         }
     }
 
+    @Transactional
     @Test
     public void getWhenHaveEatenLessCheesecakesThan_should_return_empty_list_when_there_is_no_patient_with_less_eaten_cheesecakes_than_given_number() {
         // given
@@ -131,6 +139,7 @@ public class PatientDaoTest {
         assertThat(patients.size()).isEqualTo(0);
     }
 
+    @Transactional
     @Test
     public void getWhenHaveEatenLessCheesecakesThan_should_return_all_patients_when_given_number_is_very_very_very_big() {
         // given
