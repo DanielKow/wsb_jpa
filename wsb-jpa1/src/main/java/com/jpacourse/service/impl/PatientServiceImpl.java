@@ -9,6 +9,8 @@ import com.jpacourse.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PatientServiceImpl implements PatientService {
 
@@ -28,5 +30,10 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public void remove(Long id) {
         patientDao.delete(id);
+    }
+
+    @Override
+    public List<PatientTO> getByLastName(String lastName) {
+        return List.of();
     }
 }
