@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -36,22 +37,22 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<PatientTO> getByLastName(String lastName) {
+    public Collection<PatientTO> getByLastName(String lastName) {
         return PatientMapper.toTO(patientDao.getByLastName(lastName));
     }
 
     @Override
-    public List<VisitTO> getVisits(Long patientId) {
+    public Collection<VisitTO> getVisits(Long patientId) {
         return VisitsMapper.toTO(patientDao.getVisits(patientId));
     }
 
     @Override
-    public List<PatientTO> getWhenMoreVisitsThan(int numberOfVisits) {
+    public Collection<PatientTO> getWhenMoreVisitsThan(int numberOfVisits) {
         return PatientMapper.toTO(patientDao.getWhenMoreVisitsThan(numberOfVisits));
     }
 
     @Override
-    public List<PatientTO> getWhenHaveEatenLessCheesecakesThan(int numberOfCheesecakes) {
+    public Collection<PatientTO> getWhenHaveEatenLessCheesecakesThan(int numberOfCheesecakes) {
         return PatientMapper.toTO(patientDao.getWhenHaveEatenLessCheesecakesThan(numberOfCheesecakes));
     }
 }

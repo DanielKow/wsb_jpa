@@ -10,6 +10,15 @@ public class VisitTO {
     private String doctorName;
     private String doctorSurname;
     private List<TreatmentType> treatments;
+    private PatientTO patient;
+
+    public PatientTO getPatient() {
+        return patient;
+    }
+
+    public void setPatient(PatientTO patient) {
+        this.patient = patient;
+    }
 
     public LocalDateTime getTime() {
         return time;

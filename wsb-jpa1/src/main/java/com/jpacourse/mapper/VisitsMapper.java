@@ -1,4 +1,4 @@
-﻿package com.jpacourse.mapper;
+package com.jpacourse.mapper;
 
 import com.jpacourse.dto.VisitTO;
 import com.jpacourse.persistence.entity.MedicalTreatmentEntity;
@@ -6,6 +6,7 @@ import com.jpacourse.persistence.entity.VisitEntity;
 import com.jpacourse.persistence.enums.TreatmentType;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class VisitsMapper {
@@ -15,6 +16,7 @@ public class VisitsMapper {
         to.setTime(entity.getTime());
         to.setDoctorName(entity.getDoctor().getFirstName());
         to.setDoctorSurname(entity.getDoctor().getLastName());
+        to.setPatient(PatientMapper.toTO(entity.getPatient()));
 
         ArrayList<TreatmentType> treatments = new ArrayList<>();
 
@@ -27,7 +29,7 @@ public class VisitsMapper {
         return to;
     }
 
-    public static ArrayList<VisitTO> toTO(List<VisitEntity> entities) {
+    public static Collection<VisitTO> toTO(Collection<VisitEntity> entities) {
         ArrayList<VisitTO> visits = new ArrayList<>();
 
         for (VisitEntity entity : entities) {

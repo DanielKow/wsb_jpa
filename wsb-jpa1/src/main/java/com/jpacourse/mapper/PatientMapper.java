@@ -10,6 +10,7 @@ import com.jpacourse.persistence.entity.VisitEntity;
 import com.jpacourse.persistence.enums.TreatmentType;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public final class PatientMapper {
@@ -51,7 +52,7 @@ public final class PatientMapper {
         return patientTO;
     }
 
-    public static List<PatientTO> toTO(List<PatientEntity> patientEntities) {
+    public static Collection<PatientTO> toTO(Collection<PatientEntity> patientEntities) {
         if (patientEntities == null) {
             return new ArrayList<>();
         }

@@ -1,10 +1,12 @@
 package com.jpacourse.persistance.dao;
 
 import com.jpacourse.dto.PatientTO;
+import com.jpacourse.dto.VisitTO;
 import com.jpacourse.persistence.dao.DoctorDao;
 import com.jpacourse.persistence.dao.PatientDao;
 import com.jpacourse.persistence.dao.VisitDao;
 import com.jpacourse.persistence.entity.PatientEntity;
+import com.jpacourse.persistence.entity.VisitEntity;
 import com.jpacourse.persistence.enums.Sex;
 import com.jpacourse.persistence.enums.TreatmentType;
 import org.junit.Test;
@@ -14,6 +16,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import com.jpacourse.service.PatientService;
+
+import java.util.Collection;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -88,5 +93,42 @@ public class PatientServiceTest {
         assertThat(doctorDao.findOne(1L)).isNotNull();
         assertThat(doctorDao.findOne(2L)).isNotNull();
         assertThat(doctorDao.findOne(9L)).isNotNull();
+    }
+
+    @Transactional
+    @Test
+    public void getVisits_should_return_all_visits_of_patient_with_given_id() {
+        // given
+        // when
+        Collection<VisitTO> visits = patientService.getVisits(1L);
+
+        // then
+        assertThat(visits.size()).isEqualTo(3);
+        for (VisitTO visit : visits) {
+            assertThat(visit.getPatient().getId()).isEqualTo(1L);
+        }
+    }
+
+    @Transactional
+    @Test
+    public void getVisits_should_return_only_one_visit_when_patient_has_only_one_visits() {
+        // given
+        // when
+        Collection<VisitTO> visits = patientService.getVisits(10L);
+
+        // then
+        assertThat(visits.size()).isEqualTo(1);
+        assertThat(visits.stream().findFirst().get().getPatient().getId()).isEqualTo(10L);
+    }
+
+    @Transactional
+    @Test
+    public void getVisits_should_return_empty_list_when_patient_with_given_id_has_no_visits() {
+        // given
+        // when
+        Collection<VisitTO> visits = patientService.getVisits(13L);
+
+        // then
+        assertThat(visits.size()).isEqualTo(0);
     }
 }
