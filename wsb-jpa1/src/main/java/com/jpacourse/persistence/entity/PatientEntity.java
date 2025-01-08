@@ -48,7 +48,7 @@ public class PatientEntity {
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
 	private Collection<VisitEntity> visits;
 
-	@Version public int version;
+	@Version private int version;
 
 	public Long getId() {
 		return id;
@@ -137,4 +137,12 @@ public class PatientEntity {
     public void setSex(Sex sex) {
         this.sex = sex;
     }
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 }

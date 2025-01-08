@@ -6,15 +6,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.jpacourse.persistence.dao.PatientDao;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.OptimisticLockException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -149,6 +156,25 @@ public class PatientDaoTest {
 
         // then
         assertThat(patients.size()).isEqualTo(patientDao.findAll().size());
+    }
+
+    @Test
+    public void when_concurrent_transactions_update_same_entity_OptimisticLockException_should_be_thrown() {
+        PatientEntity patientFirstTransaction = patientDao.findOne(1L);
+        PatientEntity patientSecondTransaction = patientDao.findOne(1L);
+
+        patientFirstTransaction.setNumberOfCheesecakes(111);
+        patientDao.update(patientFirstTransaction);
+
+        var afterFirstTransaction = patientDao.findOne(1L);
+
+        assertThat(afterFirstTransaction.getNumberOfCheesecakes()).isEqualTo(111);
+        assertThat(afterFirstTransaction.getVersion()).isEqualTo(1);
+
+        patientSecondTransaction.setNumberOfCheesecakes(222);
+
+        assertThatThrownBy(() -> patientDao.update(patientSecondTransaction))
+                .isInstanceOf(ObjectOptimisticLockingFailureException.class);
     }
 
 }
