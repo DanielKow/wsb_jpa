@@ -48,6 +48,8 @@ public class PatientEntity {
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
 	private Collection<VisitEntity> visits;
 
+	@Version public int version;
+
 	public Long getId() {
 		return id;
 	}
