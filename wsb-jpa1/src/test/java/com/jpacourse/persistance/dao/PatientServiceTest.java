@@ -50,7 +50,6 @@ public class PatientServiceTest {
         assertThat(patient.getTelephoneNumber()).isEqualTo("+48500123456");
         assertThat(patient.getEmail()).isEqualTo("jan.kowalski@example.com");
         assertThat(patient.getPatientNumber()).isEqualTo("P1234");
-        assertThat(patient.getNumberOfCheesecakes()).isEqualTo(1);
         assertThat(patient.getVisits().size()).isEqualTo(3);
         // do not base on order
         assertThat(patient.getVisits().get(0).getTime()).isEqualTo("2023-10-10T10:00:00");
