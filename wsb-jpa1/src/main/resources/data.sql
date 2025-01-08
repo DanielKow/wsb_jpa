@@ -42,21 +42,21 @@ VALUES
     (39, 'ul. Zimowa 45', NULL, 'Włocławek', '87-800');
 
 -- Insert Data into Patient Table
-INSERT INTO PATIENT (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, number_of_cheesecakes, sex)
+INSERT INTO PATIENT (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, number_of_cheesecakes, sex, version)
 VALUES
-    (1, 'Jan', 'Kowalski', '+48500123456', 'jan.kowalski@example.com', 'P1234', '1990-01-01', 1, 1, 'MALE'),
-    (2, 'Anna', 'Nowak', '+48500987654', 'anna.nowak@example.com', 'P5678', '1992-02-02', 2, 22, 'FEMALE'),
-    (3, 'Piotr', 'Wiśniewski', '+48500321456', 'piotr.wisniewski@example.com', 'P9101', '1985-03-03', 3, 13, 'MALE'),
-    (4, 'Maria', 'Wójcik', '+48500654321', 'maria.wojcik@example.com', 'P1122', '1991-04-04', 4, 30, 'FEMALE'),
-    (5, 'Krzysztof', 'Kowalczyk', '+48500789012', 'krzysztof.kowalczyk@example.com', 'P3344', '1983-05-05', 5, 65, 'MALE'),
-    (6, 'Agnieszka', 'Zielińska', '+48500876543', 'agnieszka.zielinska@example.com', 'P5566', '1977-06-06', 6, 11, 'FEMALE'),
-    (7, 'Tomasz', 'Szymański', '+48500678345', 'tomasz.szymanski@example.com', 'P7788', '1954-07-07', 7, 22, 'MALE'),
-    (8, 'Katarzyna', 'Lewandowska', '+48500765432', 'katarzyna.lewandowska@example.com', 'P9900', '2002-08-08', 8, 50, 'FEMALE'),
-    (9, 'Marek', 'Dąbrowski', '+48500122334', 'marek.dabrowski@example.com', 'P0011', '1989-09-09', 9, 100, 'MALE'),
-    (10, 'Magdalena', 'Zając', '+48500455667', 'magdalena.zajac@example.com', 'P2233', '1989-11-11', 10, 349, 'FEMALE'),
-    (11, 'Zbychu', 'Kowalski', '+48500123456', 'zbychujestsuper@wp.pl', 'P4444', '1973-04-01', 21, 783, 'MALE'),
-    (12, 'Zuzanna', 'Nowak', '+48500987654', 'zuzialaklanieduza@onet.pl', 'P5555', '2011-02-02', 22, 15, 'FEMALE'),
-    (13, 'Gracjan', 'Kowalski', '+48500321456', 'gk@m.com', 'P6666', '1995-03-03', 23, 1, 'MALE');
+    (1, 'Jan', 'Kowalski', '+48500123456', 'jan.kowalski@example.com', 'P1234', '1990-01-01', 1, 1, 'MALE', 0),
+    (2, 'Anna', 'Nowak', '+48500987654', 'anna.nowak@example.com', 'P5678', '1992-02-02', 2, 22, 'FEMALE', 0),
+    (3, 'Piotr', 'Wiśniewski', '+48500321456', 'piotr.wisniewski@example.com', 'P9101', '1985-03-03', 3, 13, 'MALE', 0),
+    (4, 'Maria', 'Wójcik', '+48500654321', 'maria.wojcik@example.com', 'P1122', '1991-04-04', 4, 30, 'FEMALE', 0),
+    (5, 'Krzysztof', 'Kowalczyk', '+48500789012', 'krzysztof.kowalczyk@example.com', 'P3344', '1983-05-05', 5, 65, 'MALE', 0),
+    (6, 'Agnieszka', 'Zielińska', '+48500876543', 'agnieszka.zielinska@example.com', 'P5566', '1977-06-06', 6, 11, 'FEMALE', 0),
+    (7, 'Tomasz', 'Szymański', '+48500678345', 'tomasz.szymanski@example.com', 'P7788', '1954-07-07', 7, 22, 'MALE', 0),
+    (8, 'Katarzyna', 'Lewandowska', '+48500765432', 'katarzyna.lewandowska@example.com', 'P9900', '2002-08-08', 8, 50, 'FEMALE', 0),
+    (9, 'Marek', 'Dąbrowski', '+48500122334', 'marek.dabrowski@example.com', 'P0011', '1989-09-09', 9, 100, 'MALE', 0),
+    (10, 'Magdalena', 'Zając', '+48500455667', 'magdalena.zajac@example.com', 'P2233', '1989-11-11', 10, 349, 'FEMALE', 0),
+    (11, 'Zbychu', 'Kowalski', '+48500123456', 'zbychujestsuper@wp.pl', 'P4444', '1973-04-01', 21, 783, 'MALE', 0),
+    (12, 'Zuzanna', 'Nowak', '+48500987654', 'zuzialaklanieduza@onet.pl', 'P5555', '2011-02-02', 22, 15, 'FEMALE', 0),
+    (13, 'Gracjan', 'Kowalski', '+48500321456', 'gk@m.com', 'P6666', '1995-03-03', 23, 1, 'MALE', 0);
 
 -- Insert Data into Doctor Table
 INSERT INTO DOCTOR (id, first_name, last_name, telephone_number, email, doctor_number, specialization, address_id)
